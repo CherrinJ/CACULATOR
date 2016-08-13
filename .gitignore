@@ -13,6 +13,15 @@ bin-release/
 *.air
 *.ipa
 *.apk
+*.log
+*.tlog
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.idb
+*.suo
+*.opensdf
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
