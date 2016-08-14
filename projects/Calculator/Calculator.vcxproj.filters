@@ -27,6 +27,12 @@
     <ClInclude Include="..\..\sources\myMath.h">
       <Filter>source\my</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sources\calFile.h">
+      <Filter>source\my</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\myString.h">
+      <Filter>source\my</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\myStack.cpp">
@@ -36,6 +42,12 @@
       <Filter>source\my</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sources\main.cpp">
+      <Filter>source\my</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\calFile.cpp">
+      <Filter>source\my</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\myString.cpp">
       <Filter>source\my</Filter>
     </ClCompile>
   </ItemGroup>

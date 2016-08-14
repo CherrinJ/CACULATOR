@@ -11,14 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\sources\calFile.h" />
     <ClInclude Include="..\..\sources\myMath.h" />
     <ClInclude Include="..\..\sources\myStack.h" />
+    <ClInclude Include="..\..\sources\myString.h" />
     <ClInclude Include="..\..\sources\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\sources\calFile.cpp" />
     <ClCompile Include="..\..\sources\main.cpp" />
     <ClCompile Include="..\..\sources\myMath.cpp" />
     <ClCompile Include="..\..\sources\myStack.cpp" />
+    <ClCompile Include="..\..\sources\myString.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{426D612F-36FE-4426-ACDE-37EE8393D1BA}</ProjectGuid>

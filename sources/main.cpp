@@ -5,6 +5,8 @@
 
 #include "myMath.h"
 #include "myStack.h"
+#include "calFile.h"
+#include "myString.h"
 
 using namespace std;
 
@@ -12,35 +14,33 @@ using namespace std;
 
 int main()
 {
+	//add a file contain expression that need to calculate
+	//the file got from calculator/output/data/
+	CalFile file("input.txt");
+	string t_str = file.read();
 
-	string t_str;
+	cout<<t_str<<endl;
+
 	MyStack<string> str_stack;
 	double sum = 0.0;
 	int bracketCount = 0;
 
-	string str = numConvertToStr(210.0);
-
-	cout<<"input what you want to count and input '#' at the end:"<<endl;
-	while(cin >> t_str)
+	int i = 0;
+	while(t_str[i] != '\0')
 	{
-		if (t_str == "#")
-			break;
-
-		else
-		{
-			if(t_str == "(")
+		if(t_str[i] == '(')
 			{
 					++bracketCount;
 			}
-			else if (t_str == ")")
+			else if (t_str[i] == ')')
 			{
 				--bracketCount;
 			}
 			else
 			{
-				str_stack.push(t_str);
+				str_stack.push(cTostring(t_str[i]));
 			}
-		}
+		++i;
 	}
 
 	if (bracketCount != 0)
@@ -49,6 +49,7 @@ int main()
 		return ERROR;
 	}
 
+	//calculate expression
 	sum = calculator(str_stack);
 
 	cout << "the result is :"<<sum <<endl;

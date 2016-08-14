@@ -7,6 +7,8 @@
 
 #include "myStack.h"
 
+#define ERROR 0xffffffff;
+
 using namespace std;
 
 inline int charConvertToInt(char a_c)
@@ -30,7 +32,8 @@ inline double power(int a_x ,double a_y)
 	return result;
 }
 
-inline double countByOperator(string a_str, double a_x, double a_y)
+template <class T>
+inline double countByOperator(T a_str, double a_x, double a_y)
 {
 	double result = 0.0;
 
@@ -57,24 +60,87 @@ inline double countByOperator(string a_str, double a_x, double a_y)
 	return result;
 }
 
-inline bool IsBracket(string a_str)
+template <class T>
+bool IsBracket(T a_str)
 {
 	if (a_str == "(" || a_str == ")")
 		return true;
 	return false;
 }
 
-inline bool IsOperators(string a_str)
+template <class T>
+bool IsOperators(T a_str)
 {
 	if (a_str == "*" || a_str == "/" || a_str == "+" || a_str == "-")
 		return true;
 	return false;
 }
 
-double strConvertToNum(string a_str);
-double strConvertToDouble(string a_str);
-string numConvertToStr(double a_x);
 
-double calculator(MyStack<string>& a_stack);
+
+template <class T>
+T numConvertToStr(double a_x)
+{
+	char t_ch = (a_x + 48);
+	T str = t_ch;
+	return str;
+}
+
+template <class T>
+double calculator(MyStack<T>& a_stack)
+{
+	MyStack<T> num_stack;
+	bool isFormatWrong = false;
+	bool isFirst = true;
+	double result = 0.0;
+
+	while (!a_stack.IsEmpty())
+	{
+ 		T str = a_stack.pop();
+		if(str != "*" && str != "/" && str != "+" && str != "-")
+		{
+			num_stack.push(str);
+		}
+		else if (str == "*" || str == "/" || str == "+" || str == "-")
+		{
+			if(num_stack.IsEmpty())
+			{
+				cout<< "what inputed string format is wrong2!"<<endl;
+				isFormatWrong = true;
+				break;
+			}
+			if (isFirst)
+			{
+				int a_agr = strConvertToNum(num_stack.pop());
+				int b_agr = strConvertToNum(num_stack.pop());
+				result = countByOperator(str, a_agr, b_agr);
+				isFirst = false;
+			}
+			else
+			{
+				result = countByOperator(str, result,strConvertToNum(num_stack.pop()));
+			}
+		}
+		else
+		{
+			cout<< "wrong charactor %s !"<<str<<endl;
+			isFormatWrong = true;
+			break;
+		}
+	}
+
+	if (!num_stack.IsEmpty())
+	{
+		cout<< "string format inputed is wrong!"<<endl;
+		isFormatWrong = true;
+	}
+
+	if(isFormatWrong)
+	{
+		return ERROR;
+	}
+	return result;
+}
+
 
 #endif //#ifndef __MYMATH__H__
